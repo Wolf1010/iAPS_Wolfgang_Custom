@@ -55,8 +55,8 @@ extension AutotuneConfig {
             } message: {
                 Text(
                     "This will replace your current ISF schedule with 24 hourly values " +
-                    "calculated from your last \(state.isfSchedule?.daysAnalyzed ?? 0) days of loop data. " +
-                    "Your previous schedule will be overwritten."
+                        "calculated from your last \(state.isfSchedule?.daysAnalyzed ?? 0) days of loop data. " +
+                        "Your previous schedule will be overwritten."
                 )
             }
         }
@@ -80,9 +80,11 @@ extension AutotuneConfig {
                 HStack {
                     Text("Date range")
                     Spacer()
-                    Text("\(shortDateFormatter.string(from: schedule.fromDate)) – \(shortDateFormatter.string(from: schedule.toDate))")
-                        .foregroundColor(.secondary)
-                        .font(.footnote)
+                    Text(
+                        "\(shortDateFormatter.string(from: schedule.fromDate)) – \(shortDateFormatter.string(from: schedule.toDate))"
+                    )
+                    .foregroundColor(.secondary)
+                    .font(.footnote)
                 }
                 HStack {
                     Text("Loop entries used")
@@ -126,21 +128,21 @@ extension AutotuneConfig {
                     .foregroundColor(.primary)
                 Text(
                     "Historical — Each loop cycle records the applied ISF and the sensitivity ratio. " +
-                    "The profile ISF is back-calculated as ISF × ratio across the past 21 days, " +
-                    "the top and bottom 5% are trimmed, and per-hour medians are computed. " +
-                    "Hours with fewer than 3 data points are interpolated from the nearest measured hour."
+                        "The profile ISF is back-calculated as ISF × ratio across the past 21 days, " +
+                        "the top and bottom 5% are trimmed, and per-hour medians are computed. " +
+                        "Hours with fewer than 3 data points are interpolated from the nearest measured hour."
                 )
                 .font(.footnote)
                 .foregroundColor(.secondary)
                 .padding(.top, 2)
                 Text(
                     "Adjusted — A second pass compares how much BG actually moved against what the " +
-                    "back-calculated ISF predicted. If BG consistently drops more than expected at a given hour, " +
-                    "the ISF suggestion is raised; if it drops less, it is lowered. " +
-                    "The adjustment is capped at ±20% per run to prevent overcorrection. " +
-                    "A large gap between Historical and Adjusted means the actual glucose response at that hour " +
-                    "differs meaningfully from what the profile predicts — for example, the end of dawn phenomenon " +
-                    "around 04–06 h often shows insulin becoming noticeably more effective."
+                        "back-calculated ISF predicted. If BG consistently drops more than expected at a given hour, " +
+                        "the ISF suggestion is raised; if it drops less, it is lowered. " +
+                        "The adjustment is capped at ±20% per run to prevent overcorrection. " +
+                        "A large gap between Historical and Adjusted means the actual glucose response at that hour " +
+                        "differs meaningfully from what the profile predicts — for example, the end of dawn phenomenon " +
+                        "around 04–06 h often shows insulin becoming noticeably more effective."
                 )
                 .font(.footnote)
                 .foregroundColor(.secondary)
@@ -176,8 +178,7 @@ extension AutotuneConfig {
             }
         }
 
-        @ViewBuilder
-        private func scheduleRow(hour: Int, schedule: ReasonsISFSchedule) -> some View {
+        @ViewBuilder private func scheduleRow(hour: Int, schedule: ReasonsISFSchedule) -> some View {
             let count = schedule.counts[String(hour)] ?? 0
             let isInterpolated = count < 3
             let calculatedMgdl = schedule.hours[String(hour)]
@@ -245,9 +246,11 @@ extension AutotuneConfig {
                 }
                 .foregroundColor(.accentColor)
 
-                Text("Applying this schedule will overwrite your current ISF profile with 24 hourly entries. Review the values above before saving.")
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
+                Text(
+                    "Applying this schedule will overwrite your current ISF profile with 24 hourly entries. Review the values above before saving."
+                )
+                .font(.footnote)
+                .foregroundColor(.secondary)
             }
         }
 
@@ -258,8 +261,8 @@ extension AutotuneConfig {
                         .fontWeight(.semibold)
                     Text(
                         "Run Autotune to calculate your ISF schedule. " +
-                        "The calculation requires at least 12 hours of your day to have 3 or more loop data points each, " +
-                        "drawn from the past 21 days."
+                            "The calculation requires at least 12 hours of your day to have 3 or more loop data points each, " +
+                            "drawn from the past 21 days."
                     )
                     .font(.footnote)
                     .foregroundColor(.secondary)

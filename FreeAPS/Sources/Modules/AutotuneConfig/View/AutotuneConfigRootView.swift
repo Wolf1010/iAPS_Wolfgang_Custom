@@ -49,8 +49,7 @@ extension AutotuneConfig {
 
         // MARK: - Sections
 
-        @ViewBuilder
-        private var togglesSection: some View {
+        @ViewBuilder private var togglesSection: some View {
             Section {
                 Toggle("Use Autotune", isOn: $state.useAutotune)
 
