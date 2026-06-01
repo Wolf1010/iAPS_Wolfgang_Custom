@@ -888,7 +888,7 @@ final class OpenAPS {
 
             var now = Date.now
             // TDD
-            let uniqueEvents = cd.fetchTDD(interval: DateFilter().tenDays)
+            let uniqueEvents = cd.fetchTDD(interval: DateFilter.tenDays.startDate)
             print(
                 "dynamicVariables: Time to fetch TDD \(-1 * now.timeIntervalSinceNow) seconds, total: \(-1 * start.timeIntervalSinceNow)"
             )
@@ -1136,7 +1136,12 @@ final class OpenAPS {
     }
 
     private func unchanged(meal: Meals) -> Bool {
-        meal.carbs <= 0 && meal.fat <= 0 && meal.protein <= 0
+        let hasMicros = (meal.micronutrient as? Set<Micronutrient>)?.contains { ($0.amount?.decimalValue ?? 0) > 0 } ?? false
+
+        return (meal.carbs?.decimalValue ?? 0) <= 0 &&
+            (meal.fat?.decimalValue ?? 0) <= 0 &&
+            (meal.protein?.decimalValue ?? 0) <= 0 &&
+            !hasMicros
     }
 
     private func iob(pumphistory: JSON, profile: JSON, clock: JSON, autosens: JSON) async -> RawJSON {
