@@ -78,11 +78,15 @@ extension Stat {
         /// Computes the daily TDD summary values exactly the same way HomeRootView does,
         /// so the values shown in the Stat insulin summary card always match the home view.
         private func setupInsulinSummary() {
-            let tdds = CoreDataStorage().fetchTDD(interval: DateFilter().tenDays)
+            let tdds = CoreDataStorage().fetchTDD(
+                interval: Date().addingTimeInterval(-10.days.timeInterval) as NSDate
+            )
             let yesterday = (tdds.first(where: {
                 ($0.timestamp ?? .distantFuture) <= Date().addingTimeInterval(-24.hours.timeInterval)
             })?.tdd ?? 0) as Decimal
-            let oneDaysAgo = CoreDataStorage().fetchTDD(interval: DateFilter().today).last
+            let oneDaysAgo = CoreDataStorage().fetchTDD(
+                interval: Calendar.current.startOfDay(for: Date()) as NSDate
+            ).last
 
             tddChange = ((tdds.first?.tdd ?? 0) as Decimal) - yesterday
             tddYesterday = (oneDaysAgo?.tdd ?? 0) as Decimal
@@ -184,7 +188,7 @@ extension Stat {
             request.predicate = NSPredicate(format: "date > %@", Date().addingTimeInterval(-90 * 24 * 3600) as NSDate)
 
             guard let results = try? context.fetch(request) else { return }
-
+            print("MEALS FOUND:", results.count)
             let calendar = Calendar.current
             let todayStart = calendar.startOfDay(for: Date())
 
@@ -328,9 +332,13 @@ extension Stat {
 
         private func setupMealStats() {
             let context = CoreDataStack.shared.persistentContainer.viewContext
-            let request = NSFetchRequest<Carbohydrates>(entityName: "Carbohydrates")
-            request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-            request.predicate = NSPredicate(format: "date > %@", Date().addingTimeInterval(-90 * 24 * 3600) as NSDate)
+
+            let request = NSFetchRequest<Meals>(entityName: "Meals")
+            request.sortDescriptors = [NSSortDescriptor(key: "actualDate", ascending: true)]
+            request.predicate = NSPredicate(
+                format: "actualDate > %@",
+                Date().addingTimeInterval(-90 * 24 * 3600) as NSDate
+            )
 
             guard let results = try? context.fetch(request) else { return }
 
@@ -339,7 +347,7 @@ extension Stat {
             // Daily
             var dailyMap: [Date: (carbs: Double, fat: Double, protein: Double)] = [:]
             for record in results {
-                guard let date = record.date else { continue }
+                guard let date = record.actualDate else { continue }
                 let day = calendar.startOfDay(for: date)
                 dailyMap[day, default: (0, 0, 0)].carbs += Double(truncating: record.carbs ?? 0)
                 dailyMap[day, default: (0, 0, 0)].fat += Double(truncating: record.fat ?? 0)
@@ -365,7 +373,7 @@ extension Stat {
             }
             // Overlay actual data
             for record in results {
-                guard let date = record.date, date > dayAgo else { continue }
+                guard let date = record.actualDate, date > dayAgo else { continue }
                 let hour = calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour], from: date))!
                 hourlyMap[hour, default: (0, 0, 0)].carbs += Double(truncating: record.carbs ?? 0)
                 hourlyMap[hour, default: (0, 0, 0)].fat += Double(truncating: record.fat ?? 0)
