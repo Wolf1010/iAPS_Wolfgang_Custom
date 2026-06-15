@@ -13,6 +13,7 @@ extension Home {
         @State var isStatusPopupPresented = false
         @State var showCancelAlert = false
         @State var showCancelTTAlert = false
+        @State var showExpirationAlert = false
         @State var triggerUpdate = false
         @State var display = false
         @State var displayGlucose = false
@@ -868,7 +869,7 @@ extension Home {
                     if displayAllNutrients {
                         micronutrientsAndMoreView
                             .padding(.horizontal, 23)
-                            .padding(.bottom, 10)
+                            .background(Color(.systemGray5))
                     }
                 }
             }
@@ -1002,6 +1003,9 @@ extension Home {
             }
             .font(.callout)
             .foregroundStyle(.secondary)
+            .padding(.horizontal, 10)
+            .padding(.top, 10)
+            .padding(.bottom, 30)
         }
 
         private func micronutrientRow(
@@ -1013,7 +1017,7 @@ extension Home {
         ) -> some View {
             VStack(alignment: .leading, spacing: 2) {
                 HStack {
-                    Text(title)
+                    Text(NSLocalizedString(title, comment: ""))
 
                     Spacer()
 
@@ -1024,7 +1028,7 @@ extension Home {
 
                     Text(formatter.string(from: NSDecimalNumber(decimal: value)) ?? "")
 
-                    Text(unit)
+                    Text(NSLocalizedString(unit, comment: ""))
                 }
 
                 if let progress {
@@ -1037,8 +1041,20 @@ extension Home {
             state.mealData.fat > 0 || state.mealData.protein > 0 || state.mealData.fiber > 0
         }
 
+        private func countOtherMacros() -> Int {
+            var total = 0
+            total += state.mealData.fat > 0 ? 1 : 0
+            total += state.mealData.protein > 0 ? 1 : 0
+            total += state.mealData.fiber > 0 ? 1 : 0
+            return total
+        }
+
+        private var nutrientsCount: Int {
+            state.mealData.micronutrients.count + countOtherMacros()
+        }
+
         private func micronutrientTitle() -> String {
-            let count = state.mealData.additionalNutrients
+            let count = state.mealData.additionalNutrients + countOtherMacros()
 
             guard count > 0 else {
                 return String.empty
@@ -1103,10 +1119,9 @@ extension Home {
         private var frameHeight: CGFloat {
             CGFloat(
                 200 +
-                    (state.mealData.micronutrients.isEmpty ? 0 : 70) +
-                    (otherMacros && displayAllNutrients ? 30 : 0) +
-                    (displayAllNutrients ? 1 : 0) *
-                    state.mealData.micronutrients.count * 35
+                    ((state.mealData.micronutrients.isEmpty && !otherMacros) ? 0 : 53) +
+                    (displayAllNutrients && state.mealData.micronutrients.isEmpty ? 43 : displayAllNutrients ? 64 : 0) +
+                    (displayAllNutrients ? 1 : 0) * nutrientsCount * 31
             )
         }
 
@@ -1226,6 +1241,7 @@ extension Home {
                         switch scenePhase {
                         case .active:
                             state.startTimer()
+                            checkBuildExpiration()
                         case .background,
                              .inactive:
                             state.stopTimer()
@@ -1239,6 +1255,20 @@ extension Home {
                 if onboarded.first?.firstRun ?? true {
                     state.fetchPreferences()
                 }
+                checkBuildExpiration()
+            }
+            .alert(
+                BuildExpirationManager.shared.alertTitle,
+                isPresented: $showExpirationAlert
+            ) {
+                Button("OK", role: .cancel) {}
+                Button("More Info") {
+                    if let url = URL(string: "https://github.com/Artificial-Pancreas/iAPS/releases") {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            } message: {
+                Text(BuildExpirationManager.shared.alertMessage)
             }
             .navigationTitle("Home")
             .navigationBarHidden(true)
@@ -1270,6 +1300,13 @@ extension Home {
                             }
                     )
             }
+        }
+
+        private func checkBuildExpiration() {
+            let manager = BuildExpirationManager.shared
+            guard manager.shouldShowAlert else { return }
+            manager.markAlertShown()
+            showExpirationAlert = true
         }
 
         private var popup: some View {

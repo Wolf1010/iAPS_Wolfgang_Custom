@@ -1389,11 +1389,36 @@ Enact a temp Basal or a temp target */
 
 "Today's Meals" = "Bữa ăn hôm nay";
 
-"Micronutrient" = "Micronutrient";
+"Micronutrient" = "Vi chất dinh dưỡng";
 
-"Micronutrients" = "Micronutrients";
+"Micronutrients" = "Vi chất dinh dưỡng";
 
-"Allow Meal View Micronutrients and Dietary Fibers entries" = "Allow Meal View Micronutrients and Dietary Fibers entries";
+"Vitamin A" = "Vitamin A";
+"Vitamin B1 (Thiamine)" = "Vitamin B1 (Thiamine)";
+"Vitamin B2 (Riboflavin)" = "Vitamin B2 (Riboflavin)";
+"Vitamin B3 (Niacin)" = "Vitamin B3 (Niacin)";
+"Vitamin B5 (Pantothenic Acid)" = "Vitamin B5 (Pantothenic Acid)";
+"Vitamin B6" = "Vitamin B6";
+"Vitamin B7 (Biotin)" = "Vitamin B7 (Biotin)";
+"Vitamin B9 (Folate)" = "Vitamin B9 (Folate)";
+"Vitamin B12" = "Vitamin B12";
+"Vitamin C" = "Vitamin C";
+"Vitamin D" = "Vitamin D";
+"Vitamin E" = "Vitamin E";
+"Vitamin K" = "Vitamin K";
+"Calcium" = "Canxi";
+"Iron" = "Sắt";
+"Magnesium" = "Magiê";
+"Potassium" = "Kali";
+"Zinc" = "Kẽm";
+"Phosphorus" = "Phốt pho";
+"Copper" = "Đồng";
+"Manganese" = "Mangan";
+"Selenium" = "Selen";
+"Iodine" = "I-ốt";
+"Salt" = "Muối";
+
+"Allow Meal View Micronutrients and Dietary Fibers entries" = "Cho phép nhập vi chất dinh dưỡng và chất xơ trong màn hình Bữa ăn";
 
 // --------- AI ---------
 /* */
@@ -1455,6 +1480,10 @@ Enact a temp Basal or a temp target */
 "Manual Entry" = "Nhập thủ công";
 
 "Photo Analysis" = "Phân tích ảnh";
+
+"Photo (+ comment)" = "Ảnh (+ ghi chú)";
+
+"Library (+ comment)" = "Thư viện (+ ghi chú)";
 
 "Barcode Scanner" = "Quét mã vạch";
 
@@ -1574,15 +1603,15 @@ Enact a temp Basal or a temp target */
 
 "Anthropic (Claude API) Configuration" = "Cấu hình Anthropic (Claude API)";
 
-"USDA Food Database" = "USDA Food Database";
+"USDA Food Database" = "Cơ sở dữ liệu thực phẩm USDA";
 
-"USDA FoodData API Key" = "USDA FoodData API Key";
+"USDA FoodData API Key" = "Khóa API FoodData của USDA";
 
-"Get a free key at fdc.nal.usda.gov/api-key-signup." = "Get a free key at fdc.nal.usda.gov/api-key-signup.";
+"Get a free key at fdc.nal.usda.gov/api-key-signup." = "Tạo khóa Api miễn phí tại fdc.nal.usda.gov/api-key-signup.";
 
-"Optional — uses DEMO_KEY if empty" = "Optional — uses DEMO_KEY if empty";
+"Optional — uses DEMO_KEY if empty" = "Tùy chọn — sẽ sử dụng DEMO_KEY nếu để trống";
 
-"Leave empty to use the default DEMO_KEY, which is rate-limited. A free personal API key allows more requests." = "Leave empty to use the default DEMO_KEY, which is rate-limited. A free personal API key allows more requests.";
+"Leave empty to use the default DEMO_KEY, which is rate-limited. A free personal API key allows more requests." = "Để trống để sử dụng DEMO_KEY mặc định, khóa này có giới hạn số lượng yêu cầu. Sử dụng khóa API cá nhân miễn phí sẽ cho phép thực hiện nhiều yêu cầu hơn.";
 
 "Provider for Barcode Scanning" = "Nhà cung cấp quét mã vạch";
 
@@ -1675,13 +1704,13 @@ Enact a temp Basal or a temp target */
 "fat" = "chất béo";
 
 /* Display more macro nutrients */
-"More" = "More";
+"More" = "Nhiều hơn";
 
 /* Additional nutrient */
-"more nutrient" = "more nutrient";
+"more nutrient" = "thêm dinh dưỡng khác";
 
 /* Additional nutrients */
-"more nutrients" = "more nutrients";
+"more nutrients" = "thêm dinh dưỡng khác";
 
 "📝 Notes" = "📝 Ghi chú";
 
@@ -1811,6 +1840,8 @@ Enact a temp Basal or a temp target */
 "Your AI provider has run out of credits. Please check your account billing or try a different provider." = "Bạn đã vượt quá hạn mức của nhà cung cấp AI. Vui lòng kiểm tra giới hạn sử dụng hoặc thử một nhà cung cấp khác.";
 
 "Reset to Default" = "Đặt lại về mặc định";
+
+"Take Photo" = "Take Photo";
 
 "Retake Photo" = "Chụp lại ảnh";
 
@@ -2008,9 +2039,9 @@ Enact a temp Basal or a temp target */
 
 "Carbs" = "Carbs";
 
-"Discard" = "Discard";
+"Discard" = "Bỏ qua";
 
-"Do you want to discard this meal?" = "Do you want to discard this meal?";
+"Do you want to discard this meal?" = "Bạn có muốn hủy bữa ăn này không?";
 
 // --------- End of AI ---------
 
@@ -3804,7 +3835,7 @@ Enact a temp Basal or a temp target */
 "Light / Dark Mode" = "Chế độ Sáng/Tối";
 
 /* Debug option */
-"Neglect Carbs in oref0" = "Neglect Carbs in oref0";
+"Neglect Carbs in oref0" = "Không tính carb trong oref0";
 
 /* Debug option */
 "Hide Predictions" = "Ẩn dự đoán";
@@ -3996,7 +4027,26 @@ Enact a temp Basal or a temp target */
 "Complete Meal" = "Bữa ăn đầy đủ";
 
 /* Alert title when manual temp basal rate exceeds Max Basal setting */
-"Max Basal Exceeded" = "Max Basal Exceeded";
+"Max Basal Exceeded" = "Đã vượt quá mức liều nền tối đa";
 
 /* Alert message when manual temp basal rate exceeds Max Basal setting. Args: entered rate, configured max basal */
-"The rate %.2f U/hr exceeds your Max Basal setting of %.2f U/hr." = "The rate %.2f U/hr exceeds your Max Basal setting of %.2f U/hr.";
+"The rate %.2f U/hr exceeds your Max Basal setting of %.2f U/hr." = "Tỷ lệ liều nền %.2f U/giờ vượt quá giới hạn liều nềm tối đa đã cài đặt là %.2f U/giờ.";
+
+/* --- Build expiration alert (TestFlight 90-day lifetime) --- */
+"OK" = "OK";
+
+"More Info" = "Thêm thông tin";
+
+"Build Expires Soon!" = "Bản dựng sắp hết hạn!";
+
+"Build Expiring in %d Day" = "Bản dựng sẽ hết hạn sau %d ngày";
+
+"Build Expiring in %d Days" = "Bản dựng sẽ hết hạn sau %d ngày";
+
+"Your iAPS build expires in %d hour. After expiration the app will not launch until you rebuild." = "Bản dựng iAPS của bạn sẽ hết hạn sau %d giờ. Sau khi hết hạn, ứng dụng sẽ không thể khởi chạy cho đến khi bạn xây dựng lại.";
+
+"Your iAPS build expires in %d hours. After expiration the app will not launch until you rebuild." = "Bản dựng iAPS của bạn sẽ hết hạn sau %d giờ. Sau khi hết hạn, ứng dụng sẽ không thể khởi chạy cho đến khi bạn xây dựng lại.";
+
+"Your iAPS build expires on %1$@ (%2$d day remaining). TestFlight builds must be renewed every 90 days." = "Bản dựng iAPS của bạn sẽ hết hạn vào %1$@ (còn %2$d ngày). Các bản dựng TestFlight phải được gia hạn sau 90 ngày.";
+
+"Your iAPS build expires on %1$@ (%2$d days remaining). TestFlight builds must be renewed every 90 days." = "Bản dựng iAPS của bạn sẽ hết hạn vào %1$@ (còn %2$d ngày). Các bản dựng TestFlight phải được gia hạn sau 90 ngày.";

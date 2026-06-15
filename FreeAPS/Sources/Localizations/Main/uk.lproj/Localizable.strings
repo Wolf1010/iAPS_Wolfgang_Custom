@@ -1389,11 +1389,36 @@ Enact a temp Basal or a temp target */
 
 "Today's Meals" = "Сьогоднішні Страви";
 
-"Micronutrient" = "Micronutrient";
+"Micronutrient" = "Мікронутрієнт";
 
-"Micronutrients" = "Micronutrients";
+"Micronutrients" = "Мікронутрієнти";
 
-"Allow Meal View Micronutrients and Dietary Fibers entries" = "Allow Meal View Micronutrients and Dietary Fibers entries";
+"Vitamin A" = "Вітамін А";
+"Vitamin B1 (Thiamine)" = "Вітамін B1 (Tіамін)";
+"Vitamin B2 (Riboflavin)" = "Вітамін B2 (Рибофлавін)";
+"Vitamin B3 (Niacin)" = "Вітамін B3 (Ніацин)";
+"Vitamin B5 (Pantothenic Acid)" = "Вітамін B5 (Пантотенова Кислота)";
+"Vitamin B6" = "Вітамін B6";
+"Vitamin B7 (Biotin)" = "Вітамін B7 (Біотин)";
+"Vitamin B9 (Folate)" = "Вітамін B9 (Фолат)";
+"Vitamin B12" = "Вітамін В12";
+"Vitamin C" = "Вітамін C";
+"Vitamin D" = "Вітамін D";
+"Vitamin E" = "Вітамін E";
+"Vitamin K" = "Вітамін K";
+"Calcium" = "Кальцій";
+"Iron" = "Залізо";
+"Magnesium" = "Магній";
+"Potassium" = "Калій";
+"Zinc" = "Цинк";
+"Phosphorus" = "Фосфор";
+"Copper" = "Мідь";
+"Manganese" = "Марганець";
+"Selenium" = "Селен";
+"Iodine" = "Йод";
+"Salt" = "Сіль";
+
+"Allow Meal View Micronutrients and Dietary Fibers entries" = "Дозволити записи про Мікронутрієнти та Харчові Волокна в режимі перегляду страв";
 
 // --------- AI ---------
 /* */
@@ -1456,6 +1481,10 @@ Enact a temp Basal or a temp target */
 "Manual Entry" = "Ручне Введення";
 
 "Photo Analysis" = "Аналіз Фотографій";
+
+"Photo (+ comment)" = "Фото (+ коментар)";
+
+"Library (+ comment)" = "Бібліотека (+ коментар)";
 
 "Barcode Scanner" = "Сканер Штрих-Кодів";
 
@@ -1575,15 +1604,15 @@ Enact a temp Basal or a temp target */
 
 "Anthropic (Claude API) Configuration" = "Anthropic Конфігурація (Claude API))";
 
-"USDA Food Database" = "USDA Food Database";
+"USDA Food Database" = "База даних харчових продуктів Міністерства сільського господарства США (USDA)";
 
-"USDA FoodData API Key" = "USDA FoodData API Key";
+"USDA FoodData API Key" = "Ключ API даних про харчові продукти USDA";
 
-"Get a free key at fdc.nal.usda.gov/api-key-signup." = "Get a free key at fdc.nal.usda.gov/api-key-signup.";
+"Get a free key at fdc.nal.usda.gov/api-key-signup." = "Отримайте безкоштовний ключ на fdc.nal.usda.gov/api-key-signup.";
 
-"Optional — uses DEMO_KEY if empty" = "Optional — uses DEMO_KEY if empty";
+"Optional — uses DEMO_KEY if empty" = "Необов'язково — використовується DEMO_KEY, якщо порожнє";
 
-"Leave empty to use the default DEMO_KEY, which is rate-limited. A free personal API key allows more requests." = "Leave empty to use the default DEMO_KEY, which is rate-limited. A free personal API key allows more requests.";
+"Leave empty to use the default DEMO_KEY, which is rate-limited. A free personal API key allows more requests." = "Залиште поле порожнім, щоб використовувати DEMO_KEY за замовчуванням, який обмежений за кількістю запитів. Безкоштовний персональний ключ API дозволяє виконувати більше запитів.";
 
 "Provider for Barcode Scanning" = "Постачальник Послуг Сканування Штрих-Кодів";
 
@@ -1677,13 +1706,13 @@ Enact a temp Basal or a temp target */
 "fat" = "жир";
 
 /* Display more macro nutrients */
-"More" = "More";
+"More" = "Більше";
 
 /* Additional nutrient */
-"more nutrient" = "more nutrient";
+"more nutrient" = "більше поживних речовин";
 
 /* Additional nutrients */
-"more nutrients" = "more nutrients";
+"more nutrients" = "більше поживних речовин";
 
 "📝 Notes" = "📝 Примітка";
 
@@ -1813,6 +1842,8 @@ Enact a temp Basal or a temp target */
 "Your AI provider has run out of credits. Please check your account billing or try a different provider." = "Ваш постачальник послуг штучного інтелекту вичерпав свої кредити. Перевірте рахунки свого облікового запису або спробуйте скористатися послугами іншого постачальника.";
 
 "Reset to Default" = "Скинути до Заводських Налаштувань";
+
+"Take Photo" = "Take Photo";
 
 "Retake Photo" = "Перезняти фото";
 
@@ -2010,9 +2041,9 @@ Enact a temp Basal or a temp target */
 
 "Carbs" = "Вуглеводи";
 
-"Discard" = "Discard";
+"Discard" = "Відкинути";
 
-"Do you want to discard this meal?" = "Do you want to discard this meal?";
+"Do you want to discard this meal?" = "Ви хочете відмовитися від цієї страви?";
 
 // --------- End of AI ---------
 
@@ -3807,7 +3838,7 @@ Enact a temp Basal or a temp target */
 "Light / Dark Mode" = "Світло/Темний Режим";
 
 /* Debug option */
-"Neglect Carbs in oref0" = "Neglect Carbs in oref0";
+"Neglect Carbs in oref0" = "Не враховуйте вуглеводи в oref0";
 
 /* Debug option */
 "Hide Predictions" = "Приховати передбачення";
@@ -3998,7 +4029,26 @@ Enact a temp Basal or a temp target */
 "Complete Meal" = "Повний обід";
 
 /* Alert title when manual temp basal rate exceeds Max Basal setting */
-"Max Basal Exceeded" = "Max Basal Exceeded";
+"Max Basal Exceeded" = "Перевищено Максимальну Базальну Дозу";
 
 /* Alert message when manual temp basal rate exceeds Max Basal setting. Args: entered rate, configured max basal */
-"The rate %.2f U/hr exceeds your Max Basal setting of %.2f U/hr." = "The rate %.2f U/hr exceeds your Max Basal setting of %.2f U/hr.";
+"The rate %.2f U/hr exceeds your Max Basal setting of %.2f U/hr." = "Швидкість %.2f од/год перевищує ваше налаштування Максимальної Базальної Дози %.2f од/год.";
+
+/* --- Build expiration alert (TestFlight 90-day lifetime) --- */
+"OK" = "ОК";
+
+"More Info" = "Більше інформації";
+
+"Build Expires Soon!" = "Скоро закінчується збірка!";
+
+"Build Expiring in %d Day" = "Термін дії збірки закінчується через %d день";
+
+"Build Expiring in %d Days" = "Термін дії збірки закінчується через %d днів";
+
+"Your iAPS build expires in %d hour. After expiration the app will not launch until you rebuild." = "Термін дії вашої збірки iAPS закінчується через %d годину. Після закінчення терміну дії програма не запускатиметься, доки ви не перебудуєте її.";
+
+"Your iAPS build expires in %d hours. After expiration the app will not launch until you rebuild." = "Термін дії вашої збірки iAPS закінчується через %d годин. Після закінчення терміну дії програма не запускатиметься, доки ви не перебудуєте її.";
+
+"Your iAPS build expires on %1$@ (%2$d day remaining). TestFlight builds must be renewed every 90 days." = "Термін дії вашої збірки iAPS закінчується %1$@ (залишився %2$d день). Збірки TestFlight потрібно оновлювати кожні 90 днів.";
+
+"Your iAPS build expires on %1$@ (%2$d days remaining). TestFlight builds must be renewed every 90 days." = "Термін дії вашої збірки iAPS закінчується %1$@ (залишилося %2$d днів). Збірки TestFlight потрібно оновлювати кожні 90 днів.";
